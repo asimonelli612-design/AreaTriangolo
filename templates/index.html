@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Area Triangolo</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 40px auto; padding: 0 1rem; }
+    input { padding: 6px; margin: 4px 0; width: 100%; box-sizing: border-box; }
+    button { margin-top: 12px; padding: 8px 20px; cursor: pointer; }
+    .result { margin-top: 16px; font-size: 1.2rem; color: green; }
+    .errore { margin-top: 16px; color: red; }
+    fieldset { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Calcolo Area Triangolo</h1>
+  <form method="POST">
+    <fieldset>
+      <legend>Base e altezza</legend>
+      <input type="number" name="base" placeholder="Base" step="any">
+      <input type="number" name="altezza" placeholder="Altezza" step="any">
+      <button type="submit" name="metodo" value="base_altezza">Calcola</button>
+    </fieldset>
+    <fieldset>
+      <legend>Formula di Erone (3 lati)</legend>
+      <input type="number" name="a" placeholder="Lato a" step="any">
+      <input type="number" name="b" placeholder="Lato b" step="any">
+      <input type="number" name="c" placeholder="Lato c" step="any">
+      <button type="submit" name="metodo" value="erone">Calcola</button>
+    </fieldset>
+  </form>
+  {% if area is not none %}
+    <p class="result">Area: {{ "%.2f"|format(area) }}</p>
+  {% endif %}
+  {% if errore %}
+    <p class="errore">{{ errore }}</p>
+  {% endif %}
+</body>
+</html>
